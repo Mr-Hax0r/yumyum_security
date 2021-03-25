@@ -4,8 +4,7 @@ from sys import stdout
 from time import sleep
 from sys import exit
 from platform import system as osname
-from urllib.request import urlopen
-from urllib.error import URLError
+import urllib
 import re
 from socket import gethostbyname
 from subprocess import run
@@ -62,9 +61,8 @@ def main():
                 line = f.read().splitlines()
 
             for i in line :
-                check_site = 'http://'+ssite+'/', i
-                check = fiend_somting(check_site, 'admin')
-                print(check)
+                check_site = ssite + i
+                fiend_somting(check_site, 'admin')
             x = input('[*]    Back To Menu ? (Y/n) ')
             if x == 'y' or x == '':
                 clear()
@@ -118,14 +116,13 @@ def main():
         elif choose == '6':
             with open('shell.txt', 'r') as a :
                 lines = a.read().splitlines()
-            ssite = input('\n    [*]  please enter site example (site.com): ')
+            ssite = input('\n    [*]  please enter site example (https://site.com): ')
             if ssite[1] != '/':
                 ssite = ssite + '/'
 
             for i in lines:
-                check_site = 'http://' + ssite + '/', i
-                check = fiend_somting(check_site, 'shell')
-                print(check)
+                check_site = ssite + i
+                fiend_somting(check_site, 'shell')
             x = input('[*]    Back To Menu ? (Y/n) ')
             if x == 'y' or x == '':
                 clear()
@@ -179,11 +176,13 @@ class color:
     RESET = '\033[49m'
 
 def fiend_somting(site, idk):
-    try:
-        check_url = urlopen(site)
-        return (f"{idk} found >>> {site}")
-    except URLError as msg:
-        return (f"not found {idk} >>> {site}")
+    try :
+        openurl = urllib.request.urlopen(site)
+        print('----------------------')
+        print(color.GREEN + f"{idk} found >>> " + site)
+        print("----------------------")
+    except urllib.error.URLError as msg :
+        print (color.RED + f"{idk} not found >>> " + site)
 
 
 def fiend_cms(site):
@@ -285,7 +284,7 @@ def finder_subdomain(domain):
 
 def auto_update():
     print(version)
-    system('git fetch --a')
+    system('git fetch --all')
     system('git pull origin main')
 
 banner()
