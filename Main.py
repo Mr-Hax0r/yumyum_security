@@ -284,7 +284,7 @@ def finder_subdomain(domain):
 
 def auto_update():
     print(version)
-    system('git fetch --all')
+    system('git fetch')
     system('git pull origin main')
 
 banner()
