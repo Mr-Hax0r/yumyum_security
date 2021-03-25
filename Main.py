@@ -54,7 +54,7 @@ def main():
         choose = input('Yum~# ')
 
         if choose == '1':
-            ssite = input('\n    [*]  please enter site example (site.com): ')
+            ssite = input('\n    [*]  please enter site example (https://site.com): ')
             if ssite[1] != '/':
                 ssite = ssite + '/'
             with open ('admin.txt', 'r') as f :
@@ -181,8 +181,8 @@ def fiend_somting(site, idk):
         print('----------------------')
         print(color.GREEN + f"{idk} found >>> " + site)
         print("----------------------")
-    except urllib.error.URLError as msg :
-        print (color.RED + f"{idk} not found >>> " + site)
+    except :
+        print (f"{idk} not found >>> " + site)
 
 
 def fiend_cms(site):
