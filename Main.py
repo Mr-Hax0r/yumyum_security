@@ -9,7 +9,6 @@ import re
 from socket import gethostbyname
 from subprocess import run
 from json import loads
-from time import sleep
 
 def banner():
     print('''
@@ -55,7 +54,7 @@ def main():
 
         if choose == '1':
             ssite = input('\n    [*]  please enter site example (https://site.com): ')
-            if ssite[1] != '/':
+            if ssite[-1] != '/':
                 ssite = ssite + '/'
             with open ('admin.txt', 'r') as f :
                 line = f.read().splitlines()
