@@ -9,6 +9,7 @@ import re
 from socket import gethostbyname
 from subprocess import run
 from json import loads
+version = '1.0.0'
 
 def clear():
     if osname == 'nt':
@@ -168,7 +169,7 @@ def main():
         else:
             pass
 
-version = '1.0.0'
+
 def slowprint(s):
     for c in s + '\n':
         stdout.write(c)
