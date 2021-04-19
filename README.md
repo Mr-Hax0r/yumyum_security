@@ -27,5 +27,5 @@ python3 Main.py
 
 # Screenshots
 
-[![asciicast](https://s17.picofile.com/file/8428815568/yum_yum_security.png)]
+![asciicast](https://s17.picofile.com/file/8428815568/yum_yum_security.png)
 
