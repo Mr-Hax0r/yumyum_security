@@ -10,6 +10,13 @@ from socket import gethostbyname
 from subprocess import run
 from json import loads
 
+def clear():
+    if osname == 'nt':
+        system('cls')
+    else:
+        system('clear')
+
+
 def banner():
     print('''
  __ __  __ __  ___ ___      __ __  __ __  ___ ___       _____   ___    __  __ __  ____   ____  ______  __ __ 
@@ -130,8 +137,21 @@ def main():
                 exit()
         elif choose == '7':
             slowprint('coming soon')
+
+
         elif choose == '8':
-            slowprint('coming soon')
+            ssite = input('\n    [*]  please enter site example (site.com): ')
+            print('{*}======================================{*}')
+            fiend_ip_with_sub(ssite)
+            print('{*}======================================{*}\n')
+            x = input('[*]    Back To Menu ? (Y/n) ')
+            if x == 'y' or x == '':
+                clear()
+                banner()
+            else:
+                exit()
+
+
         elif choose == '9':
             auto_update()
         elif choose == '0':
@@ -145,13 +165,6 @@ def slowprint(s):
         stdout.write(c)
         stdout.flush()
         sleep(10. / 100)
-
-
-def clear():
-    if osname == 'nt':
-        system('cls')
-    else:
-        system('clear')
 
 
 class color:
@@ -285,6 +298,28 @@ def auto_update():
     print(version)
     system('git fetch')
     system('git pull origin main')
+
+def fiend_ip_with_sub(site):
+    site_lis = finder_subdomain(site)
+    for i in site_lis :
+        sleep(2)
+        if i[:4] == 'www.':
+            try:
+                i = i[4:]
+                print(i)
+                print(gethostbyname(i))
+                print('------------')
+            except:
+                print('error')
+                print('------------')
+        else :
+            try:
+                print(i)
+                print(gethostbyname(i))
+                print('------------')
+            except:
+                print('error')
+                print('------------')
 
 banner()
 main()
