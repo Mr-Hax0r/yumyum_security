@@ -284,12 +284,19 @@ def finder_subdomain(domain):
 
             for num in range(0, len(ress)):
                 if '*' not in ress[num]:
-
                     list_res.append(ress[num])
-                    response_crt = []
+                    res = []
                     for i in list_res:
-                        if i not in response_crt:
-                            response_crt.append(i)
+                        if i not in res:       
+                            res.append(i)
+                    response_crt = []        
+                    for i in res:
+                        if i[:4] == 'www.':
+                            pass
+                        else:
+                            response_crt.append(i)       
+
+
         return response_crt
 
     return crt_find()
@@ -301,25 +308,14 @@ def auto_update():
 
 def fiend_ip_with_sub(site):
     site_lis = finder_subdomain(site)
+    banner()
     for i in site_lis :
         sleep(2)
-        if i[:4] == 'www.':
-            try:
-                i = i[4:]
-                print(i)
-                print(gethostbyname(i))
-                print('------------')
-            except:
-                print('error')
-                print('------------')
-        else :
-            try:
-                print(i)
-                print(gethostbyname(i))
-                print('------------')
-            except:
-                print('error')
-                print('------------')
+        try:
+            print(f'[ {i} ]   --->  [ {gethostbyname(i)} ]')
+        except:
+            print(f'[ {i} ]   --->  [ Error ! ]')
+
 
 banner()
 main()
