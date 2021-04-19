@@ -140,17 +140,26 @@ def main():
 
 
         elif choose == '8':
-            ssite = input('\n    [*]  please enter site example (site.com): ')
-            print('{*}======================================{*}')
-            fiend_ip_with_sub(ssite)
-            print('{*}======================================{*}\n')
-            x = input('[*]    Back To Menu ? (Y/n) ')
-            if x == 'y' or x == '':
-                clear()
-                banner()
-            else:
-                exit()
-
+            print('eneter nuber one for fiend with subdomain or with api')
+            chooseip = int(input('wich one you want ? 1 for sub 2 for api : '))
+            if chooseip == 1:
+                ssite = input('\n    [*]  please enter site example (site.com): ')
+                print('{*}======================================{*}')
+                fiend_ip_with_sub(ssite)
+                print('{*}======================================{*}\n')
+                x = input('[*]    Back To Menu ? (Y/n) ')
+                if x == 'y' or x == '':
+                    clear()
+                    banner()
+                else:
+                    exit()
+            elif chooseip == 2:
+                slowprint('coming soon')
+                x = input('[*]    Back To Menu ? (Y/n) ')
+                if x == 'y' or x == '':
+                    clear()
+                    banner()
+                
 
         elif choose == '9':
             auto_update()
