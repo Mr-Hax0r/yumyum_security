@@ -10,7 +10,6 @@ from socket import gethostbyname
 from subprocess import run
 from json import loads
 
-
 def clear():
     if osname == 'nt':
         system('cls')
