@@ -312,7 +312,6 @@ def finder_subdomain(domain):
 
 def auto_update():
     print(version)
-    system('git fetch')
     system('git pull origin main')
 
 def fiend_ip_with_sub(site):
